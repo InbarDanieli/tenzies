@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Dice from './Dice';
 
 function App() {
-  const [gameDice, setGameDice] = useState(resetGame())
+  const [gameDice, setGameDice] = useState([])
+  const [isDone, setIsDone] = useState(false)
+
+  useEffect(() => {
+    const allEqual = gameDice.every(val => val.value === gameDice[0].value);
+    const allChosen = gameDice.every(val => val.chosen);
+    if (allEqual && allChosen) {
+      setIsDone(!isDone)
+    }
+  }, [gameDice])
+
 
   function resetGame() {
     let gameArr = []
@@ -15,7 +25,8 @@ function App() {
         id: i + 1
       })
     }
-    return gameArr
+    setGameDice(gameArr)
+    setIsDone(false)
   }
 
   function ChoosenRolls(id) {
@@ -52,7 +63,7 @@ function App() {
             />
           )}
         </div>
-        <button onClick={rollDice} className='roolBtn'>Roll</button>
+        <button onClick={isDone ? resetGame : rollDice} className='roolBtn'>{isDone ? "Reset" : "Roll"}</button>
       </div>
     </div>
   );
