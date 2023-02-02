@@ -1,38 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Karla:wght@700&display=swap");
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  background: #0b2434;
+  height: 100vh;
+  display: flex;
+  align-items: center;
   text-align: center;
+  padding: 24px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game {
+  padding: 0 10%;
+  background: #f5f5f5;
+  height: 60%;
+  max-width: 800px;
+  border-radius: 10px;
+  font-family: "Karla", sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+}
+
+.instructions p {
+  font-family: "inter", sans-serif;
+}
+
+.diceContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.dice {
+  width: 90%;
+  max-width: 64px;
+  -webkit-aspect-ratio: 1/1;
+  aspect-ratio: 1/1;
+  border-radius: 4px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  font-size: 21px;
+  background: #ffffff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  user-select: none;
+}
+
+.dice.choose {
+  background-color: #59e391;
+}
+
+.roolBtn {
+  width: 30%;
+  background: #5035ff;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 8px 24px;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  border: none;
 }
