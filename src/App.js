@@ -7,10 +7,16 @@ function App() {
   const [isDone, setIsDone] = useState(false)
 
   useEffect(() => {
-    const allEqual = gameDice.every(val => val.value === gameDice[0].value);
-    const allChosen = gameDice.every(val => val.chosen);
-    if (allEqual && allChosen) {
-      setIsDone(!isDone)
+    resetGame()
+  }, [])
+
+  useEffect(() => {
+    if (gameDice.length !== 0) {
+      const allEqual = gameDice.every(val => val.value === gameDice[0].value);
+      const allChosen = gameDice.every(val => val.chosen);
+      if (allEqual && allChosen) {
+        setIsDone(true)
+      }
     }
   }, [gameDice])
 
@@ -25,8 +31,8 @@ function App() {
         id: i + 1
       })
     }
-    setGameDice(gameArr)
     setIsDone(false)
+    setGameDice(gameArr)
   }
 
   function ChoosenRolls(id) {
